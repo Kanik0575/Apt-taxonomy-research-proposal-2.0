@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+venv/
+dist/
+build/
+*.egg
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NOTE: outputs/ is intentionally committed so the professor
+# can view all charts and reports directly on GitHub.
+# data/corpus.json is auto-generated on every run — not committed.
+data/corpus.json

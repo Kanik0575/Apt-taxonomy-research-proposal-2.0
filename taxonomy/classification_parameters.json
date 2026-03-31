@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "description": "Nine automated classification parameters used to tag each paper in the corpus and drive the taxonomy classifier",
+  "parameters": {
+    "CP-01": {
+      "name": "Temporal Sequencing",
+      "description": "Ordering of TTPs into time-stamped kill-chain sequences. Models APT behaviour as a time-ordered Markov chain.",
+      "methods": ["Hidden Markov Models (HMM)", "Temporal Graph Networks", "ARIMA time-series", "DBSCAN temporal clustering"],
+      "primary_taxa": ["T1", "T10", "T13"],
+      "corpus_coverage": 83,
+      "example_frameworks": ["Markov Chain", "Temporal GNN", "ARIMA + DBSCAN"]
+    },
+    "CP-02": {
+      "name": "Behavioral Fingerprinting",
+      "description": "Identification of adversary-unique behavioral signatures across multiple campaigns to enable attribution.",
+      "methods": ["Process ancestry graphs", "API call sequence profiling", "Registry delta analysis", "Signed binary execution scoring"],
+      "primary_taxa": ["T2", "T4", "T5", "T8"],
+      "corpus_coverage": 56,
+      "example_frameworks": ["Behavioral RF", "Process Graph + SVM", "Registry Delta + Isolation Forest"]
+    },
+    "CP-03": {
+      "name": "NLP-Based TTP Extraction",
+      "description": "Automated parsing of unstructured threat intelligence reports, incident documents, and CTI feeds to extract technique mentions.",
+      "methods": ["BERT fine-tuned on CTI", "Named Entity Recognition (NER)", "Dependency parsing", "LLM-based extraction (GPT-4)"],
+      "primary_taxa": ["T3", "T4", "T7"],
+      "corpus_coverage": 125,
+      "example_frameworks": ["APT-BERT", "TTPDrill", "APTNER", "LADDER (GPT-4)"]
+    },
+    "CP-04": {
+      "name": "Graph-Theoretic Modeling",
+      "description": "Representation of attack campaigns as directed graphs — nodes are techniques, edges are temporal/causal relationships.",
+      "methods": ["Knowledge Graphs", "Graph Neural Networks (GNN)", "Graph Convolutional Networks (GCN)", "Node2Vec embeddings"],
+      "primary_taxa": ["T5", "T9", "T10"],
+      "corpus_coverage": 56,
+      "example_frameworks": ["CyberKG", "AttackKG+", "APTG-KG", "GCN + ATT&CK"]
+    },
+    "CP-05": {
+      "name": "ML-Driven Attribution",
+      "description": "Supervised classification of observed TTP sequences to known APT groups using labeled training data.",
+      "methods": ["Random Forest", "SVM", "Siamese Neural Networks", "Bayesian Networks", "XGBoost + SHAP"],
+      "primary_taxa": ["T1", "T3", "T5", "T10", "T12", "T13"],
+      "corpus_coverage": 0,
+      "note": "CP-05 is embedded within other parameters in most papers; rarely the sole classification method",
+      "example_frameworks": ["Diamond Model + ML", "Siamese Network + TTP Embedding", "Bayesian Attribution"]
+    },
+    "CP-06": {
+      "name": "Indicator Correlation",
+      "description": "Cross-campaign clustering and deduplication of Indicators of Compromise (IOCs) to link campaigns to threat actors.",
+      "methods": ["IOC graph clustering", "Cosine similarity on indicator vectors", "STIX 2.1 relationship mapping", "Hash-based deduplication"],
+      "primary_taxa": ["T1", "T2"],
+      "corpus_coverage": 29,
+      "example_frameworks": ["OpenIOC + STIX 2.0", "Node2Vec + Cosine Similarity", "STIX 2.1 + TAXII 2.1"]
+    },
+    "CP-07": {
+      "name": "Anomaly Detection",
+      "description": "Statistical deviation analysis to flag novel techniques, zero-day exploits, and behaviors that deviate from established baselines.",
+      "methods": ["Isolation Forest", "Statistical threshold models", "Entropy analysis", "One-class SVM", "Autoencoder-based detection"],
+      "primary_taxa": ["T3", "T6", "T7", "T8", "T9", "T14"],
+      "corpus_coverage": 132,
+      "example_frameworks": ["Isolation Forest", "Entropy + RF", "Behavioral Threshold + Isolation Forest"]
+    },
+    "CP-08": {
+      "name": "C2 Traffic Analysis",
+      "description": "Protocol-level and behavioral classification of command-and-control communication patterns in network traffic.",
+      "methods": ["JA3/JA3S TLS fingerprinting", "DNS entropy analysis", "Deep Packet Inspection (DPI)", "Beacon interval clustering", "API call graph analysis"],
+      "primary_taxa": ["T12"],
+      "corpus_coverage": 47,
+      "example_frameworks": ["JA3 + SVM", "CNN-LSTM TLS", "DPI + XGBoost", "Federated CNN + TLS"]
+    },
+    "CP-09": {
+      "name": "Exfiltration Modeling",
+      "description": "Volume, timing, and protocol-based classification of data exfiltration events, with focus on low-and-slow transfer detection.",
+      "methods": ["DBSCAN temporal clustering", "NetFlow time-series analysis", "DLP volume baseline deviation", "ARIMA anomaly detection"],
+      "primary_taxa": ["T11", "T13"],
+      "corpus_coverage": 41,
+      "example_frameworks": ["DBSCAN + NetFlow", "ARIMA + Time-Series", "Volume Baseline + Statistical Model"]
+    }
+  }
+}
