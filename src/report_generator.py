@@ -1,10 +1,4 @@
-"""
-report_generator.py
-───────────────────
-Exports the final taxonomy report as:
-  - outputs/reports/taxonomy_report.md  (full Markdown)
-  - outputs/reports/summary.csv          (per-node stats)
-"""
+
 
 from __future__ import annotations
 import os, csv
