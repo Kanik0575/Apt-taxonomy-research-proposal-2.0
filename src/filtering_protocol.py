@@ -6,7 +6,7 @@ from collections import Counter
 from typing import List
 
 
-# ── Configuration constants ───────────────────────────────────────────────────
+
 
 SEARCH_KEYWORDS = [
     '"Advanced Persistent Threat"',
@@ -54,12 +54,12 @@ EXCLUSION_CRITERIA = [
 
 @dataclass
 class FilteringStats:
-    stage1_total:    int = 1208   # raw across all DBs
-    stage2_retained: int = 900    # after dedup
+    stage1_total:    int = 1208   
+    stage2_retained: int = 900   
     stage2_removed:  int = 308
-    stage3_eligible: int = 260    # after title/abstract screen
+    stage3_eligible: int = 260    
     stage3_excluded: int = 640
-    stage4_final:    int = 100    # after temporal stratification
+    stage4_final:    int = 100    
     stage4_removed:  int = 160
     year_counts:     dict = field(default_factory=dict)
 
@@ -72,8 +72,7 @@ class FilteringProtocol:
         self.stats  = FilteringStats()
         self._run_complete = False
 
-    # ── Public API ────────────────────────────────────────────────
-
+  
     def run(self) -> FilteringStats:
         """Execute all four filtering stages and validate the corpus."""
         self._stage1_identification()
@@ -137,8 +136,7 @@ class FilteringProtocol:
     def get_boolean_query(self) -> str:
         return BOOLEAN_QUERY
 
-    # ── Private stage methods ─────────────────────────────────────
-
+   
     def _stage1_identification(self) -> None:
         total = sum(db["raw_hits"] for db in DATABASES.values())
         self.stats.stage1_total = total
