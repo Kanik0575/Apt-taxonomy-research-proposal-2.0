@@ -1,15 +1,4 @@
-"""
-filtering_protocol.py
-─────────────────────
-Simulates and documents the full 4-stage filtering pipeline used
-to reduce ~1,200 raw database hits to the final 100-paper corpus.
 
-Stages:
-  Stage 1 — Keyword-based identification across 4 databases
-  Stage 2 — Cross-database deduplication
-  Stage 3 — Title/abstract screening (inclusion/exclusion criteria)
-  Stage 4 — Temporal Stratification (14 papers/yr; 16 for 2026)
-"""
 
 from __future__ import annotations
 from dataclasses import dataclass, field
@@ -76,10 +65,7 @@ class FilteringStats:
 
 
 class FilteringProtocol:
-    """
-    Encapsulates the 4-stage filtering pipeline.
-    Validates the loaded corpus against the expected allocation.
-    """
+   
 
     def __init__(self, corpus: list):
         self.corpus = corpus
