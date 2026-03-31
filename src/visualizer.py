@@ -4,7 +4,7 @@ import os
 from collections import Counter, defaultdict
 
 import matplotlib
-matplotlib.use("Agg")   # non-interactive backend (safe for all environments)
+matplotlib.use("Agg")   
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
