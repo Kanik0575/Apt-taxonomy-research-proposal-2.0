@@ -5,7 +5,7 @@ from collections import Counter, defaultdict
 from typing import Dict, List
 
 
-# ── ATT&CK Tactic → Taxonomy Node mapping ────────────────────────────────────
+
 
 TACTIC_MAP = {
     "TA0043": {"code": "T1",  "name": "Reconnaissance",        "mitre": "TA0043"},
@@ -38,20 +38,20 @@ TACTIC_MAP = {
 
 
 STAGE_TO_CP = {
-    "TA0043": ["CP-06", "CP-07"],          # Reconnaissance
-    "TA0042": ["CP-02", "CP-04"],          # Resource Development
-    "TA0001": ["CP-03", "CP-07"],          # Initial Access
-    "TA0002": ["CP-02", "CP-03"],          # Execution
-    "TA0003": ["CP-02", "CP-04"],          # Persistence
-    "TA0004": ["CP-07"],                   # Privilege Escalation
-    "TA0005": ["CP-03", "CP-07"],          # Defense Evasion
-    "TA0006": ["CP-02", "CP-07"],          # Credential Access
-    "TA0007": ["CP-04", "CP-07"],          # Discovery
-    "TA0008": ["CP-01", "CP-04"],          # Lateral Movement
-    "TA0009": ["CP-09"],                   # Collection
-    "TA0011": ["CP-08"],                   # C2
-    "TA0010": ["CP-01", "CP-09"],          # Exfiltration
-    "TA0040": ["CP-07"],                   # Impact
+    "TA0043": ["CP-06", "CP-07"],          
+    "TA0042": ["CP-02", "CP-04"],         
+    "TA0001": ["CP-03", "CP-07"],         
+    "TA0002": ["CP-02", "CP-03"],         
+    "TA0003": ["CP-02", "CP-04"],         
+    "TA0004": ["CP-07"],                   
+    "TA0005": ["CP-03", "CP-07"],          
+    "TA0006": ["CP-02", "CP-07"],          
+    "TA0007": ["CP-04", "CP-07"],          
+    "TA0008": ["CP-01", "CP-04"],          
+    "TA0009": ["CP-09"],                   
+    "TA0011": ["CP-08"],                   
+    "TA0010": ["CP-01", "CP-09"],          
+    "TA0040": ["CP-07"],                  
 }
 
 
