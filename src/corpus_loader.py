@@ -1,9 +1,3 @@
-"""
-corpus_loader.py
-────────────────
-Loads the 100-paper corpus from CSV and converts it to JSON.
-Provides summary statistics for verification.
-"""
 
 import csv
 import json
@@ -12,10 +6,7 @@ from collections import Counter
 
 
 class CorpusLoader:
-    """
-    Loads the corpus CSV produced by the Temporal Stratification
-    selection protocol and exposes it as a list of dicts.
-    """
+   
 
     REQUIRED_COLUMNS = {
         "No.", "Year", "Paper_Title", "Platform",
@@ -28,8 +19,7 @@ class CorpusLoader:
         self.papers    = []
         self._loaded   = False
 
-    # ── Public API ────────────────────────────────────────────────
-
+    
     def load(self) -> list:
         """Parse the corpus CSV and return a list of paper dicts."""
         if not os.path.exists(self.csv_path):
@@ -72,7 +62,7 @@ class CorpusLoader:
             print(f"  │  {plat:<10} {bar:<20} {cnt:>2} ({pct:.0f}%)      │")
         print("  └─────────────────────────────────────────────────┘")
 
-    # ── Private helpers ───────────────────────────────────────────
+   
 
     def _validate_columns(self, found: set) -> None:
         missing = self.REQUIRED_COLUMNS - found
