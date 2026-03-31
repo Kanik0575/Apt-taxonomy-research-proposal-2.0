@@ -1,14 +1,3 @@
-"""
-visualizer.py
-─────────────
-Generates all publication-quality charts for the project:
-  1.  Year distribution (bar chart with stratification line)
-  2.  Platform distribution (pie chart)
-  3.  APT stage corpus coverage (horizontal bar)
-  4.  Classification framework frequency (bar)
-  5.  Classification parameters usage (radar/spider)
-  6.  Taxonomy heatmap (stage × year)
-"""
 
 from __future__ import annotations
 import os
@@ -42,7 +31,7 @@ class Visualizer:
         self.corpus   = corpus
         self.taxonomy = taxonomy
 
-    # ── 1. Year distribution ──────────────────────────────────────
+    
     def plot_year_distribution(self) -> None:
         year_counts = Counter(p["Year"] for p in self.corpus)
         years  = sorted(year_counts)
@@ -75,7 +64,7 @@ class Visualizer:
         fig.tight_layout()
         _save(fig, "01_year_distribution.png")
 
-    # ── 2. Platform distribution ──────────────────────────────────
+   
     def plot_platform_distribution(self) -> None:
         plat_counts = Counter(p["Platform"] for p in self.corpus)
         labels  = list(plat_counts.keys())
@@ -100,7 +89,7 @@ class Visualizer:
         fig.tight_layout()
         _save(fig, "02_platform_distribution.png")
 
-    # ── 3. APT stage corpus coverage ─────────────────────────────
+  
     def plot_stage_coverage(self) -> None:
         nodes = self.taxonomy.get("nodes", {})
         names  = []
@@ -141,12 +130,12 @@ class Visualizer:
         fig.tight_layout()
         _save(fig, "03_stage_coverage.png")
 
-    # ── 4. Framework frequency ────────────────────────────────────
+    
     def plot_framework_wordcloud_proxy(self) -> None:
         """Bar chart of the top classification frameworks used."""
         fw_counts = Counter(p["Classification_Framework"] for p in self.corpus)
 
-        # Aggregate: if framework contains a keyword, group it
+        
         grouped: Counter = Counter()
         for fw, cnt in fw_counts.items():
             fw_lower = fw.lower()
@@ -189,7 +178,7 @@ class Visualizer:
         fig.tight_layout()
         _save(fig, "04_framework_distribution.png")
 
-    # ── 5. Classification parameters radar ───────────────────────
+   
     def plot_classification_parameters(self) -> None:
         cp_data = self.taxonomy.get("classification_parameters", {})
         labels  = [f"{k}\n{v['name'][:18]}" for k, v in cp_data.items()]
@@ -212,7 +201,7 @@ class Visualizer:
         fig.tight_layout()
         _save(fig, "05_classification_parameters_radar.png")
 
-    # ── 6. Stage × Year heatmap ───────────────────────────────────
+    
     def plot_heatmap(self) -> None:
         YEARS  = list(range(2020, 2027))
         STAGES = ["T1","T2","T3","T4","T5","T6","T7",
