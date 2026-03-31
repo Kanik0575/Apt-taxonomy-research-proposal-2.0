@@ -1,12 +1,4 @@
-"""
-taxonomy_classifier.py
-──────────────────────
-Builds the automated taxonomy from the corpus by:
-  1. Mapping each paper's Stage_Codes to MITRE ATT&CK tactic nodes
-  2. Computing coverage statistics across all 14 taxonomy taxa
-  3. Identifying which Classification Parameters each paper addresses
-  4. Producing a structured taxonomy dict for downstream use
-"""
+
 
 from __future__ import annotations
 from collections import Counter, defaultdict
@@ -32,10 +24,7 @@ TACTIC_MAP = {
     "TA0040": {"code": "T14", "name": "Impact",                 "mitre": "TA0040"},
 }
 
-# ── Classification Parameters ─────────────────────────────────────────────────
 
-CLASSIFICATION_PARAMS = {
-    "CP-01": "Temporal Sequencing",
     "CP-02": "Behavioral Fingerprinting",
     "CP-03": "NLP-Based TTP Extraction",
     "CP-04": "Graph-Theoretic Modeling",
@@ -46,7 +35,7 @@ CLASSIFICATION_PARAMS = {
     "CP-09": "Exfiltration Modeling",
 }
 
-# ── Heuristic: map stage codes → likely classification parameters ─────────────
+
 
 STAGE_TO_CP = {
     "TA0043": ["CP-06", "CP-07"],          # Reconnaissance
@@ -76,7 +65,7 @@ class TaxonomyClassifier:
         self.taxonomy = {}
         self._built   = False
 
-    # ── Public API ────────────────────────────────────────────────
+    
 
     def build_taxonomy(self) -> Dict:
         """
@@ -101,7 +90,7 @@ class TaxonomyClassifier:
                     for cp in STAGE_TO_CP.get(tc, []):
                         cp_counts[cp] += 1
 
-        # Build structured taxonomy dict
+        
         self.taxonomy = {
             "nodes": {},
             "classification_parameters": {},
